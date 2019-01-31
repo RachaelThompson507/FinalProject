@@ -5,6 +5,9 @@ namespace _FinalProject.Models
     {
         public int SubmissionId { get; set; }
 
+        //relationships
+        public string UserId { get; set; }
+
         //attributes
         public string SubmissionState { get; set; }
     }
