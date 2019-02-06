@@ -16,5 +16,8 @@ namespace _FinalProject.Model.Models
         public int PostId { get; set; }
         public string UserId { get; set; }
         public int RobinId { get; set; }
+
+        //Navigational References 
+
     }
 }

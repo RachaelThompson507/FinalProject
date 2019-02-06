@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using _FinalProject.Model.Models;
+using _FinalProject.Data.Context;
+using System;
 
 namespace _FinalProject
 {

@@ -1,8 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ApplicationIcon />
+      <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\Model.csproj" />
-    <ProjectReference Include="..\_FinalProject\Web.csproj" />
   </ItemGroup>
 
 </Project>

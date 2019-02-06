@@ -22,7 +22,7 @@ namespace _FinalProject.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\ProjectsV13; Database=Cozy; Trusted_Connection=True");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\ProjectsV13; Database=FinalProject; Trusted_Connection=True");
         }
       
 

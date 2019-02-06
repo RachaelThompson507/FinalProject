@@ -10,7 +10,8 @@ namespace _FinalProject.Model.Models
             public DateTime CreatedDate { get; set; }
             public DateTime DisableDate { get; set; }
 
-            //Relationships
-        
+        //Relationships
+
+        //Navigational References 
     }
 }

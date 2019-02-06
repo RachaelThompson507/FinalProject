@@ -10,5 +10,7 @@ namespace _FinalProject.Model.Models
         //relationships
         public string UserId { get; set; }
 
+        //Navigational References 
+
     }
 }

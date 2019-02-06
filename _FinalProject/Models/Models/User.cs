@@ -13,5 +13,7 @@ namespace _FinalProject.Model.Models
 
         //Relationships
 
+        //Navigational References 
+
     }
 }

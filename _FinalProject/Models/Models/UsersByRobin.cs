@@ -9,6 +9,7 @@ namespace _FinalProject.Model.Models
         //Relationships
         public string UserId { get; set; }
         public int RobinID { get; set; }
+        //Navigational References 
 
     }
 }
