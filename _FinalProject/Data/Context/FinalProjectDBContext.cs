@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _FinalProject.Context
+namespace _FinalProject.Data.Context
 {
     public class FinalProjectDBContext: DbContext
     {
@@ -19,10 +19,11 @@ namespace _FinalProject.Context
         public DbSet <Calendar>Calendars { get; set; }
         public DbSet<Map>Maps { get; set; }
 
-        public FinalProjectDBContext(DbContextOptions<FinalProjectDBContext> options) : base(options)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\ProjectsV13; Database=Cozy; Trusted_Connection=True");
         }
+      
 
     }
 }

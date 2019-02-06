@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using _FinalProject.Data.Context;
 
-namespace _FinalProject.Migrations
+namespace_FinalProject.Data.Migrations
 {
     public partial class FinalProject : Migration
     {

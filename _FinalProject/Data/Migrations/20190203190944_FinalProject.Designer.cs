@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using _FinalProject.Context;
+using _FinalProject.Data.Context;
 
-namespace _FinalProject.Migrations
+namespace_FinalProject.Data.Migrations
 {
     [DbContext(typeof(FinalProjectDBContext))]
     [Migration("20190203190944_FinalProject")]

@@ -33,12 +33,6 @@ namespace _FinalProject
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //Add A Connection String- need to fix it later
-            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=FinalProject;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-            //Add a service for DB
-            services.AddDbContext<FinalProjectDBContext>(options => options.UseSqlServer(connectionString));
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

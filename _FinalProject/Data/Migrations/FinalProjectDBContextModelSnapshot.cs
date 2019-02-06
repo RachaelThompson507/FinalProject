@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using _FinalProject.Context;
+using _FinalProject.Data.Context;
 
-namespace _FinalProject.Migrations
+namespace _FinalProject.Data.Migrations
 {
     [DbContext(typeof(FinalProjectDBContext))]
     partial class FinalProjectDBContextModelSnapshot : ModelSnapshot
