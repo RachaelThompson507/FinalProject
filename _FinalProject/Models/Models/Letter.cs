@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace _FinalProject.Model.Models
 {
     public class Letter
@@ -18,5 +20,10 @@ namespace _FinalProject.Model.Models
         public int RobinId { get; set; }
 
         //Navigational References 
+        public User User { get; set; }
+        public Robin Robin { get; set; }
+        public IEnumerable<Post>Posts { get; set; }
+        public IEnumerable<Comment>Comments { get; set; }
+        public IEnumerable<SubmissionStatus>SubmissionStatuses { get; set; }
     }
 }

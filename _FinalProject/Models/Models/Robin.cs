@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace _FinalProject.Model.Models
 {
     public class Robin
@@ -13,5 +15,6 @@ namespace _FinalProject.Model.Models
         //Relationships
 
         //Navigational References 
+        public IEnumerable<Letter> Letters { get; set; }
     }
 }

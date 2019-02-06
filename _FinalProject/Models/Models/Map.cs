@@ -16,6 +16,7 @@ namespace _FinalProject.Model.Models
         public int RobinId { get; set; }
 
         //Navigational References 
-
+        public User User { get; set; }
+        public Robin Robin { get; set; }
     }
 }
