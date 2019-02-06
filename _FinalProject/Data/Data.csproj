@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Models\Models.csproj" />
-    <ProjectReference Include="..\_FinalProject\_FinalProject.csproj" />
+    <ProjectReference Include="..\Models\Model.csproj" />
+    <ProjectReference Include="..\_FinalProject\Web.csproj" />
   </ItemGroup>
 
 </Project>

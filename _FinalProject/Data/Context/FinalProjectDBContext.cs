@@ -1,4 +1,4 @@
-﻿using _FinalProject.Models;
+﻿using _FinalProject.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

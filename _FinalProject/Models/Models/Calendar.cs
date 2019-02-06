@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _FinalProject.Models
+namespace _FinalProject.Model.Models
 {
     public class Calendar
     {
