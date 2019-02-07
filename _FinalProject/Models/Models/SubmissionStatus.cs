@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace _FinalProject.Model.Models
 {
     public class SubmissionStatus
@@ -8,9 +10,9 @@ namespace _FinalProject.Model.Models
         public string SubmissionState { get; set; }
 
         //relationships
-        public string UserId { get; set; }
+     
 
         //Navigational References 
-
+        IEnumerable<User>Users { get; set; }
     }
 }
