@@ -1,6 +1,6 @@
 ﻿using System;
-namespace _FinalProject.Models
-{
+namespace _FinalProject.Model.Models
+{ 
     public class UsersByRobin
     {
         public int Id { get; set; }
@@ -9,6 +9,8 @@ namespace _FinalProject.Models
         //Relationships
         public string UserId { get; set; }
         public int RobinID { get; set; }
-
+        //Navigational References 
+        public User User { get; set; }
+        public Robin Robin { get; set; }
     }
 }

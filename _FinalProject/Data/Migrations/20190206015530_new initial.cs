@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace _FinalProject.Migrations
+namespace Data.Migrations
 {
-    public partial class FinalProject : Migration
+    public partial class newinitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

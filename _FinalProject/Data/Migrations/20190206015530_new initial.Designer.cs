@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using _FinalProject.Context;
+using _FinalProject.Data.Context;
 
-namespace _FinalProject.Migrations
+namespace Data.Migrations
 {
     [DbContext(typeof(FinalProjectDBContext))]
-    partial class FinalProjectDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190206015530_new initial")]
+    partial class newinitial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,7 +21,7 @@ namespace _FinalProject.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("_FinalProject.Models.Calendar", b =>
+            modelBuilder.Entity("_FinalProject.Model.Models.Calendar", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,7 +42,7 @@ namespace _FinalProject.Migrations
                     b.ToTable("Calendars");
                 });
 
-            modelBuilder.Entity("_FinalProject.Models.Comment", b =>
+            modelBuilder.Entity("_FinalProject.Model.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +65,7 @@ namespace _FinalProject.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("_FinalProject.Models.Letter", b =>
+            modelBuilder.Entity("_FinalProject.Model.Models.Letter", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -92,7 +94,7 @@ namespace _FinalProject.Migrations
                     b.ToTable("Letters");
                 });
 
-            modelBuilder.Entity("_FinalProject.Models.Map", b =>
+            modelBuilder.Entity("_FinalProject.Model.Models.Map", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -111,7 +113,7 @@ namespace _FinalProject.Migrations
                     b.ToTable("Maps");
                 });
 
-            modelBuilder.Entity("_FinalProject.Models.Post", b =>
+            modelBuilder.Entity("_FinalProject.Model.Models.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -132,7 +134,7 @@ namespace _FinalProject.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("_FinalProject.Models.Robin", b =>
+            modelBuilder.Entity("_FinalProject.Model.Models.Robin", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -153,7 +155,7 @@ namespace _FinalProject.Migrations
                     b.ToTable("Robins");
                 });
 
-            modelBuilder.Entity("_FinalProject.Models.SubmissionStatus", b =>
+            modelBuilder.Entity("_FinalProject.Model.Models.SubmissionStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -168,7 +170,7 @@ namespace _FinalProject.Migrations
                     b.ToTable("SubmissionStatuses");
                 });
 
-            modelBuilder.Entity("_FinalProject.Models.User", b =>
+            modelBuilder.Entity("_FinalProject.Model.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -188,7 +190,7 @@ namespace _FinalProject.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("_FinalProject.Models.UsersByRobin", b =>
+            modelBuilder.Entity("_FinalProject.Model.Models.UsersByRobin", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

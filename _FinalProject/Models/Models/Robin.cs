@@ -1,5 +1,7 @@
 ﻿using System;
-namespace _FinalProject.Models
+using System.Collections.Generic;
+
+namespace _FinalProject.Model.Models
 {
     public class Robin
     {
@@ -10,7 +12,9 @@ namespace _FinalProject.Models
             public DateTime CreatedDate { get; set; }
             public DateTime DisableDate { get; set; }
 
-            //Relationships
-        
+        //Relationships
+
+        //Navigational References 
+        public IEnumerable<Letter> Letters { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
-namespace _FinalProject.Models
+using System.Collections.Generic;
+
+namespace _FinalProject.Model.Models
 {
     public class User
     {
@@ -13,5 +15,7 @@ namespace _FinalProject.Models
 
         //Relationships
 
+        //Navigational References 
+        public IEnumerable<Robin>Robins { get; set; }
     }
 }
