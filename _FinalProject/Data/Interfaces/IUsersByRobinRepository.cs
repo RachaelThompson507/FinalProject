@@ -8,15 +8,15 @@ namespace Data.Interfaces
     public interface IUsersByRobinRepository
     {
         //Create
-        UserByRobin Create(UserByRobin newUser);
+        UsersByRobin Create(UsersByRobin newUser);
 
         //Read
-        UserByRobin GetById(int UserByRobinId);
-        ICollection<Robin> GetRobinById(int robinId);
-        ICollection<User> GetUserById(string robinId);
+        UsersByRobin GetById(int UserByRobinId);
+        ICollection<UsersByRobin> GetRobinById(int robinId);
+        ICollection<UsersByRobin> GetUserById(string robinId);
 
         //Update
-        UserByRobin Update(UserByRobin updatedUserByRobin);
+        UsersByRobin Update(UsersByRobin updatedUserByRobin);
 
         //Delete
         bool DeleteById(int userByRobinId);
