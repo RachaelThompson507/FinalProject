@@ -2,35 +2,37 @@
 using Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Data.Implementations.MockRepositories
 {
     public class MockRobinRepository : IRobinRepository
     {
+        private List<Robin> Robins = new List<Robin>();
         public Robin Create(Robin newRobin)
         {
-            throw new NotImplementedException();
+            newRobin.Id = Robins.OrderByDescending(c => c.Id).Single().Id + 1;
+            return newRobin;
         }
 
         public bool DeleteById(int robinId)
         {
-            throw new NotImplementedException();
+            var robin = GetById(robinId);
+            Robins.Remove(robin);
+            return true;
         }
 
         public Robin GetById(int robinId)
         {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<Robin> GetUserById(string userId)
-        {
-            throw new NotImplementedException();
+            return Robins.Single(r=> r.Id == robinId);
         }
 
         public Robin Update(Robin updatedRobin)
         {
-            throw new NotImplementedException();
+            DeleteById(updatedRobin.Id);
+            Robins.Add(updatedRobin);
+            return updatedRobin;
         }
     }
 }

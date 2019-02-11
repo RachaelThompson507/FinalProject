@@ -1,7 +1,9 @@
-﻿using _FinalProject.Model.Models;
+﻿using _FinalProject.Data.Context;
+using _FinalProject.Model.Models;
 using Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Data.Implementations.EFCoreRepositories
@@ -10,27 +12,42 @@ namespace Data.Implementations.EFCoreRepositories
     {
         public Robin Create(Robin newRobin)
         {
-            throw new NotImplementedException();
+            using (var db = new FinalProjectDBContext())
+            {
+                db.Robins.Add(newRobin);
+                db.SaveChanges();
+                return newRobin;
+            }
         }
 
         public bool DeleteById(int robinId)
         {
-            throw new NotImplementedException();
+            using (var db = new FinalProjectDBContext())
+            {
+                var robin = GetById(robinId);
+                db.Robins.Remove(robin);
+                db.SaveChanges();
+                return true;
+            }
         }
 
         public Robin GetById(int robinId)
         {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<Robin> GetUserById(string userId)
-        {
-            throw new NotImplementedException();
+            using (var db = new FinalProjectDBContext())
+            {
+                return db.Robins.Single(r => r.Id == robinId);
+            }
         }
 
         public Robin Update(Robin updatedRobin)
         {
-            throw new NotImplementedException();
+            using (var db = new FinalProjectDBContext())
+            {
+                var update = GetById(updatedRobin.Id);
+                db.Entry(update).CurrentValues.SetValues(updatedRobin);
+                db.SaveChanges();
+                return update;
+            }
         }
     }
 }

@@ -12,7 +12,6 @@ namespace Data.Interfaces
 
         //Read
         Robin GetById(int robinId);
-        ICollection<Robin> GetUserById(string userId);
 
         //Update
         Robin Update(Robin updatedRobin);
