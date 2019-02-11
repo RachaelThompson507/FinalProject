@@ -12,8 +12,8 @@ namespace Data.Interfaces
 
         //Read
         Letter GetById(int letterId);
-        ICollection<User> GetUserById(string userId);
-        ICollection<Robin> GetRobinById(int robinId);
+        ICollection<Letter> GetUserById(string userId);
+        ICollection<Letter> GetRobinById(int robinId);
 
         //Update
         Letter Update(Letter updatedLetter);
