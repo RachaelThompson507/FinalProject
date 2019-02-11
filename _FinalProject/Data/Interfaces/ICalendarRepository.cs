@@ -12,8 +12,8 @@ namespace Data.Interfaces
 
         //Read
         Calendar GetById(int calendarId);
-        ICollection<User> GetUserById(string userId);
-        ICollection<Robin> GetRobinById(int robinId);
+        ICollection<Calendar> GetUserById(string userId);
+        ICollection<Calendar> GetRobinById(int robinId);
 
         //Update
         Calendar Update(Calendar updatedCalendar);

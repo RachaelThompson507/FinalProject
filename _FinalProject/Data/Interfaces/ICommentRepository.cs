@@ -12,9 +12,9 @@ namespace Data.Interfaces
 
         //Read
          Comment GetById(int CommentId);
-        ICollection<User> GetUserById(string userId);
-        ICollection<Robin> GetRobinById(int robinId);
-        ICollection<Post> GetPostById(string postId);
+        ICollection<Comment> GetUserById(string userId);
+        ICollection<Comment> GetRobinById(int robinId);
+        ICollection<Comment> GetPostById(int postId);
 
         //Update
         Comment Update(Comment updatedComment);
