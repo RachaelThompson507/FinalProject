@@ -12,8 +12,8 @@ namespace Data.Interfaces
 
         //Read
         Post GetById(int postId);
-        ICollection<User> GetUserById(string userId);
-        ICollection<Robin> GetRobinById(int robinId);
+        ICollection<Post> GetUserById(string userId);
+        ICollection<Post> GetRobinById(int robinId);
 
         //Update
         Post Update(Post updatedPost);

@@ -10,7 +10,7 @@ namespace Data.Interfaces
 
         //Read
         SubmissionStatus GetById(int submissionStatusId);
-        ICollection<User> GetUserById(string userId);
+        ICollection<SubmissionStatus> GetAll();
 
 
     }

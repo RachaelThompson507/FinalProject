@@ -12,8 +12,8 @@ namespace Data.Interfaces
 
         //Read
         Map GetById(int mapId);
-        ICollection<User> GetUserById(string userId);
-        ICollection<Robin> GetRobinById(int robinId);
+        ICollection<Map> GetUserById(string userId);
+        ICollection<Map> GetRobinById(int robinId);
 
         //Update
         Map Update(Map updatedMap);
