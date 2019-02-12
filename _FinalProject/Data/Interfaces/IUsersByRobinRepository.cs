@@ -13,7 +13,7 @@ namespace Data.Interfaces
         //Read
         UsersByRobin GetById(int UserByRobinId);
         ICollection<UsersByRobin> GetRobinById(int robinId);
-        ICollection<UsersByRobin> GetUserById(string robinId);
+        ICollection<UsersByRobin> GetUserById(string userId);
 
         //Update
         UsersByRobin Update(UsersByRobin updatedUserByRobin);

@@ -1,7 +1,9 @@
-﻿using _FinalProject.Model.Models;
+﻿using _FinalProject.Data.Context;
+using _FinalProject.Model.Models;
 using Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Data.Implementations.EFCoreRepositories
@@ -10,32 +12,60 @@ namespace Data.Implementations.EFCoreRepositories
     {
         public UsersByRobin Create(UsersByRobin newUser)
         {
-            throw new NotImplementedException();
+            using (var db = new FinalProjectDBContext())
+            {
+                db.UsersByRobins.Add(newUser);
+                db.SaveChanges();
+                return newUser;
+            }
         }
 
         public bool DeleteById(int userByRobinId)
         {
-            throw new NotImplementedException();
+            using (var db = new FinalProjectDBContext())
+            {
+                var usersBy = GetById(userByRobinId);
+                db.UsersByRobins.Remove(usersBy);
+                db.SaveChanges();
+                return true;
+            }
         }
 
         public UsersByRobin GetById(int UserByRobinId)
         {
-            throw new NotImplementedException();
+            using (var db = new FinalProjectDBContext())
+            {
+                return db.UsersByRobins.Single(uR => uR.Id == UserByRobinId);
+            }
         }
 
         public ICollection<UsersByRobin> GetRobinById(int robinId)
         {
-            throw new NotImplementedException();
+            using (var db = new FinalProjectDBContext())
+            {
+                var robin = db.UsersByRobins.Where(c => c.RobinId == robinId).ToList() as ICollection<UsersByRobin>;
+                return robin;
+            }
         }
 
-        public ICollection<UsersByRobin> GetUserById(string robinId)
+        public ICollection<UsersByRobin> GetUserById(string userId)
         {
-            throw new NotImplementedException();
+            using (var db = new FinalProjectDBContext())
+            {
+                var user = db.UsersByRobins.Where(c => c.UserId == userId).ToList() as ICollection<UsersByRobin>;
+                return user;
+            }
         }
 
         public UsersByRobin Update(UsersByRobin updatedUserByRobin)
         {
-            throw new NotImplementedException();
+            using (var db = new FinalProjectDBContext())
+            {
+                var update = GetById(updatedUserByRobin.Id);
+                db.Entry(update).CurrentValues.SetValues(updatedUserByRobin);
+                db.SaveChanges();
+                return update;
+            }
         }
     }
 }

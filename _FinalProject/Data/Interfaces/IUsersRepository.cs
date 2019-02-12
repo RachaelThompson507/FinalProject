@@ -11,13 +11,12 @@ namespace Data.Interfaces
         User Create(User newUser);
 
         //Read
-        User GetById(int UserId);
-        ICollection<Robin> GetRobinById(string robinId);
+        User GetById(string UserId);
 
         //Update
         User Update(User updatedUser);
 
         //Delete
-        bool DeleteById(int userId);
+        bool DeleteById(string userId);
     }
 }

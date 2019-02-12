@@ -2,35 +2,37 @@
 using Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Data.Implementations.MockRepositories
 {
     public class MockUserRepository : IUsersRepository
     {
+        private List<User> Users = new List<User>();
         public User Create(User newUser)
         {
-            throw new NotImplementedException();
+            newUser.Id = Users.OrderByDescending(c => c.Id).Single().Id + 1;
+            return newUser;
         }
 
-        public bool DeleteById(int userId)
+        public bool DeleteById(string userId)
         {
-            throw new NotImplementedException();
+            var user = GetById(userId);
+            Users.Remove(user);
+            return true;
         }
 
-        public User GetById(int UserId)
+        public User GetById(string UserId)
         {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<Robin> GetRobinById(string robinId)
-        {
-            throw new NotImplementedException();
+            return Users.Single(c => c.Id == UserId);
         }
 
         public User Update(User updatedUser)
         {
-            throw new NotImplementedException();
+            DeleteById(updatedUser.Id);
+            Users.Add(updatedUser);
+            return updatedUser;
         }
     }
 }
