@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Data.Interfaces
 {
-    interface IUsersRepository
+    public interface IUsersRepository
     {
         //Create
         User Create(User newUser);

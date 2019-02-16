@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Data.Interfaces
 {
-    interface ILetterRepository
+    public interface ILetterRepository
     {
         //Create
         Letter Create(Letter newLetter);

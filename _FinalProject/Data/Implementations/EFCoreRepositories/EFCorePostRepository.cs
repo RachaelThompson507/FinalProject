@@ -50,8 +50,11 @@ namespace Data.Implementations.EFCoreRepositories
 
         public ICollection<Post> GetUserById(string userId)
         {
-            var userPost = db.Posts.Where(p => p.UserId == userId).ToList() as ICollection<Post>;
-            return userPost;
+            using (var db = new FinalProjectDBContext())
+            {
+                var userPost = db.Posts.Where(p => p.UserId == userId).ToList() as ICollection<Post>;
+                return userPost;
+            }
         }
 
         public Post Update(Post updatedPost)

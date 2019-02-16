@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Data.Interfaces
 {
-    interface IMapRepository
+    public interface IMapRepository
     {
         //Create
         Map Create(Map newMap);
