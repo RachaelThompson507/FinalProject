@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Service.Services
 {
-    public interface IUserService
+    public interface IUsersService
     {
         //Create
         User Create(User newUser);
@@ -20,11 +20,11 @@ namespace Service.Services
         bool DeleteById(string userId);
     }
 
-    public class UserService : IUserService
+    public class UsersService : IUsersService
     {
-        private readonly IUserService _userService;
+        private readonly IUsersService _userService;
 
-        public UserService(IUserService userService) =>
+        public UsersService(IUsersService userService) =>
             _userService = userService;
 
         public User Create(User newUser) =>
