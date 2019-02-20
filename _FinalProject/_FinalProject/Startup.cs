@@ -33,12 +33,16 @@ namespace _FinalProject
             });
 
             //MockImplementation
-            GetDependencyResolvedForMockRepositoryLayer(services);
+            //GetDependencyResolvedForMockRepositoryLayer(services);
             //EFCore Implementation
-            //GetDependencyResolvedForEFCoreRepositoryLayer(services);
+            GetDependencyResolvedForEFCoreRepositoryLayer(services);
             //ServiceLayer Implementation
             GetDependencyResolvedForServiceLayer(services);
-
+            //service for DbContext
+            services.AddDbContext<FinalProjectDBContext>();
+            //service for Identity
+            services.AddDefaultIdentity<User>().AddEntityFrameworkStores<FinalProjectDBContext>();
+            //using MVC
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
