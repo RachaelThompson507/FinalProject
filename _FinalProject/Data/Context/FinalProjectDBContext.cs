@@ -1,5 +1,6 @@
 ﻿using _FinalProject.Model;
 using _FinalProject.Model.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace _FinalProject.Data.Context
 {
-    public class FinalProjectDBContext: DbContext
+    //updated for Identity 02.19.2019
+    public class FinalProjectDBContext: IdentityDbContext<User>
     {
-        public DbSet<User>Users { get; set; }
+        //public DbSet<User>Users { get; set; }
         public DbSet<Robin>Robins { get; set; }
         public DbSet<UsersByRobin> UsersByRobins { get; set; }
         public DbSet<Letter>Letters { get; set; }
@@ -24,7 +26,12 @@ namespace _FinalProject.Data.Context
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\ProjectsV13; Database=FinalProject; Trusted_Connection=True");
         }
-      
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
+
 
     }
 }

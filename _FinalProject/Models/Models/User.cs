@@ -1,19 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 
 namespace _FinalProject.Model.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        
-        public string Id { get; set; }
+        //updated based on the IdentityUser
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ImageURL { get; set; }
         public DateTime CreatedDate { get; set; }
-        public DateTime DisableDate { get; set; }
-
-        //Relationships
+        //public DateTime DisableDate { get; set; }
 
         //Navigational References 
         public IEnumerable<Robin>Robins { get; set; }
