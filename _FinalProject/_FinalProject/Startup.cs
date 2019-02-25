@@ -10,6 +10,7 @@ using System;
 using Data.Interfaces;
 using Data.Implementations.MockRepositories;
 using Service.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace _FinalProject
 {
@@ -34,14 +35,18 @@ namespace _FinalProject
 
             //MockImplementation
             //GetDependencyResolvedForMockRepositoryLayer(services);
+
             //EFCore Implementation
             GetDependencyResolvedForEFCoreRepositoryLayer(services);
+
             //ServiceLayer Implementation
             GetDependencyResolvedForServiceLayer(services);
+
             //service for DbContext
             services.AddDbContext<FinalProjectDBContext>();
-            //service for Identity
-            services.AddDefaultIdentity<User>().AddEntityFrameworkStores<FinalProjectDBContext>();
+
+            //service for Identitiy
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<FinalProjectDBContext>();
             //using MVC
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -62,6 +67,9 @@ namespace _FinalProject
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            //use Identity Service
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

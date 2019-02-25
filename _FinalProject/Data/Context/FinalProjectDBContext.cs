@@ -1,5 +1,6 @@
 ﻿using _FinalProject.Model;
 using _FinalProject.Model.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -30,6 +31,13 @@ namespace _FinalProject.Data.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<IdentityRole>().HasData(
+            new IdentityRole { Name = "GeneralUser", NormalizedName = "GENERALUSER" },
+            new IdentityRole { Name = "RobinAdmin", NormalizedName = "ROBINADMIN" },
+            new IdentityRole { Name = "SuperAdmin", NormalizedName = "SUPERADMIN" }
+            );
+
         }
 
 

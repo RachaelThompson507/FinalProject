@@ -13,8 +13,8 @@ namespace _FinalProject.Model.Models
         public string Description { get; set; }
 
         //relationships
-        public string UserId { get; set; }
         public int RobinId { get; set; }
+        public string UserId { get; set; }
 
         //Navigational References 
         public User User { get; set; }
