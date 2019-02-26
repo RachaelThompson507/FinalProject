@@ -8,10 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190220014330_usingIdntiyServceForUser.cs" />
     <Compile Remove="Migrations\20190224200543_Roles-Added.cs" />
     <Compile Remove="Migrations\20190224200928_UpdatedRolesTable.cs" />
     <Compile Remove="Migrations\20190224201240_UpdatedRolesTable.cs" />
     <Compile Remove="Migrations\20190224204117_USERROLES.cs" />
+    <Compile Remove="Migrations\20190226002222_updated-for-ID-Users.cs" />
   </ItemGroup>
 
   <ItemGroup>
