@@ -11,6 +11,7 @@ using Data.Interfaces;
 using Data.Implementations.MockRepositories;
 using Service.Services;
 using Microsoft.AspNetCore.Identity;
+using Data.Implementations.EFCoreRepositories;
 
 namespace _FinalProject
 {
@@ -82,6 +83,7 @@ namespace _FinalProject
         private void GetDependencyResolvedForMockRepositoryLayer(IServiceCollection services)
         {
             services.AddScoped<ICalendarRepository, MockCalendarRepository>();
+            services.AddScoped<IEventRepository, MockEventRepository>();
             services.AddScoped<ICommentRepository, MockCommentRepository>();
             services.AddScoped<ILetterRepository, MockLetterRepository>();
             services.AddScoped<IMapRepository, MockMapRepository>();
@@ -93,15 +95,16 @@ namespace _FinalProject
         }
         private void GetDependencyResolvedForEFCoreRepositoryLayer(IServiceCollection services)
         {
-            services.AddScoped<ICalendarRepository, MockCalendarRepository>();
-            services.AddScoped<ICommentRepository, MockCommentRepository>();
-            services.AddScoped<ILetterRepository, MockLetterRepository>();
-            services.AddScoped<IMapRepository, MockMapRepository>();
-            services.AddScoped<IPostRepository, MockPostRepository>();
-            services.AddScoped<IRobinRepository, MockRobinRepository>();
-            services.AddScoped<ISubmissionStatusRepository, MockSubmissionStatusRepository>();
-            services.AddScoped<IUsersByRobinRepository, MockUsersByRobinRepository>();
-            services.AddScoped<IUsersRepository, MockUserRepository>();
+            services.AddScoped<ICalendarRepository, EFCoreCalendarRepository>();
+            services.AddScoped<ICommentRepository, EFCoreCommentRepository>();
+            services.AddScoped<ILetterRepository, EFCoreLetterRepository>();
+            services.AddScoped<IMapRepository, EFCoreMapRepository>();
+            services.AddScoped<IPostRepository, EFCorePostRepository>();
+            services.AddScoped<IRobinRepository, EFCoreRobinRepository>();
+            services.AddScoped<ISubmissionStatusRepository, EFCoreSubmissionStatusRepository>();
+            services.AddScoped<IUsersByRobinRepository, EFCoreUsersByRobinRepository>();
+            services.AddScoped<IUsersRepository, EFCoreUserRepository>();
+            services.AddScoped<IEventRepository, EFCoreEventRepository>();
         }
 
         private void GetDependencyResolvedForServiceLayer(IServiceCollection services)
