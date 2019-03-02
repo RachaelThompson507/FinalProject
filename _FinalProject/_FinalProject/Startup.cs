@@ -48,6 +48,10 @@ namespace _FinalProject
 
             //service for Identitiy
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<FinalProjectDBContext>();
+
+            //service for cookie auth
+            CookieConfigureAuth(services);
+
             //using MVC
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -80,6 +84,19 @@ namespace _FinalProject
             });
         }
 
+        //for auth services
+        private void CookieConfigureAuth(IServiceCollection services)
+        {
+            services.ConfigureApplicationCookie(options =>
+            {
+                //overrides default account login
+                options.LoginPath = "/Account/SignIn";
+                //sends unauth user to a view
+                options.AccessDeniedPath = "/Account/Unauthorized";
+            });
+        }
+
+        //for dependency injection
         private void GetDependencyResolvedForMockRepositoryLayer(IServiceCollection services)
         {
             services.AddScoped<ICalendarRepository, MockCalendarRepository>();
@@ -97,6 +114,7 @@ namespace _FinalProject
         {
             services.AddScoped<ICalendarRepository, EFCoreCalendarRepository>();
             services.AddScoped<ICommentRepository, EFCoreCommentRepository>();
+            services.AddScoped<IEventRepository, EFCoreEventRepository>();
             services.AddScoped<ILetterRepository, EFCoreLetterRepository>();
             services.AddScoped<IMapRepository, EFCoreMapRepository>();
             services.AddScoped<IPostRepository, EFCorePostRepository>();
@@ -104,12 +122,11 @@ namespace _FinalProject
             services.AddScoped<ISubmissionStatusRepository, EFCoreSubmissionStatusRepository>();
             services.AddScoped<IUsersByRobinRepository, EFCoreUsersByRobinRepository>();
             services.AddScoped<IUsersRepository, EFCoreUserRepository>();
-            services.AddScoped<IEventRepository, EFCoreEventRepository>();
         }
-
         private void GetDependencyResolvedForServiceLayer(IServiceCollection services)
         {
             services.AddScoped<ICalendarService, CalendarService>();
+            services.AddScoped<IEventService, EventService>();
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<ILetterService, LetterService>();
             services.AddScoped<IMapService, MapService>();

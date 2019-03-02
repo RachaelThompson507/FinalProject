@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Data.Implementations.EFCoreRepositories
 {
-    class EFCoreEventRepository : IEventRepository
+    public class EFCoreEventRepository : IEventRepository
     {
         public Event Create(Event newEvent)
         {
