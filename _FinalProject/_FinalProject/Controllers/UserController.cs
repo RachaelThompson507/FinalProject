@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using _FinalProject.Model.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Web.ViewModels;
 
 namespace Web.Controllers
 {
@@ -13,7 +14,6 @@ namespace Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly List<IdentityRole> _roles;
 
         public UserController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager,
         SignInManager<User> signInManager)
@@ -21,19 +21,49 @@ namespace Web.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
-            //call Role Table one time
-            _roles = _roleManager.Roles.ToList();
         }
         
         [HttpGet]
         public IActionResult CreateUser()
         {
-            //only allowing one role to be created this way
-            var userVM = new ViewModels.CreateUserViewModel
+            //only allowing User Role creation here
+            var userCreateVM = new CreateUserViewModel();
+            return View(userCreateVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(CreateUserViewModel userCreateVM)
+        {
+            if(ModelState.IsValid)
             {
-                Roles = new Select(_roles)
+                var user = new User
+                {
+                    //Create User
+                    Email = userCreateVM.Email,
+                    UserName = userCreateVM.Email,
+                    FirstName = userCreateVM.FirstName,
+                    LastName = userCreateVM.LastName
+                };
+
+                var result = await _userManager.CreateAsync(user, userCreateVM.Password);
+
+                if(result.Succeeded)
+                {
+                    //new user - apply role
+                    await _userManager.AddToRoleAsync(user, userCreateVM.Role.Id = 1.ToString());
+                    //auto - login user
+                    await _signInManager.SignInAsync(user, true);
+                    return RedirectToAction("Index", "User");
+                }
+                else
+                {
+                    foreach(var error in result.Errors)
+                    {
+                        ModelState.AddModelError(error.Code, error.Description);
+                    }
+                }
             };
-            return View(userVM);
+            return View(userCreateVM);
         }
     }
 }

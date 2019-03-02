@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Web.ViewModels
 {
@@ -22,5 +22,9 @@ namespace Web.ViewModels
 
         [Required, Display(Description = ("Last Name"))]
         public string LastName { get; set; }
+
+        [Required, Display(Description = "Account Type")]
+        public IdentityRole Role{ get; set; }
+
     }
 }
