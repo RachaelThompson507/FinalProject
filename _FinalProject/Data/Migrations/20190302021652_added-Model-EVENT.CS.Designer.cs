@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _FinalProject.Data.Context;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(FinalProjectDBContext))]
-    partial class FinalProjectDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190302021652_added-Model-EVENT.CS")]
+    partial class addedModelEVENTCS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -308,9 +310,9 @@ namespace Data.Migrations
                     b.ToTable("AspNetRoles");
 
                     b.HasData(
-                        new { Id = "66ccd4ec-e6ca-4c9f-86e4-24f08a7f3c62", ConcurrencyStamp = "1ef3ff21-1ed0-4672-99d5-609e00b1e094", Name = "GeneralUser", NormalizedName = "GENERALUSER" },
-                        new { Id = "989f9d1a-cd0c-45e8-9c69-98366bf68de2", ConcurrencyStamp = "4d59f3ef-91d6-4d02-9774-6b3b45809636", Name = "RobinAdmin", NormalizedName = "ROBINADMIN" },
-                        new { Id = "5f41c5c6-d7af-4317-8884-1b340bc8d73e", ConcurrencyStamp = "cc00506d-6ce0-4552-8b48-c4ca4c0bf315", Name = "SuperAdmin", NormalizedName = "SUPERADMIN" }
+                        new { Id = "1f617d3b-e6b2-4b23-bcf2-1cfe0a36b525", ConcurrencyStamp = "f0c1e617-5f12-41a8-a596-595ed09fdf1f", Name = "GeneralUser", NormalizedName = "GENERALUSER" },
+                        new { Id = "a141e5a2-21fc-4a42-917b-6d4a437602a4", ConcurrencyStamp = "5b12cc91-7e15-4b8e-827a-2214d5b166ab", Name = "RobinAdmin", NormalizedName = "ROBINADMIN" },
+                        new { Id = "276e1993-f5d2-41e0-8eb8-3bd8b849b1e6", ConcurrencyStamp = "f4dd2bc5-c99f-4f33-af56-b741753480bf", Name = "SuperAdmin", NormalizedName = "SUPERADMIN" }
                     );
                 });
 
@@ -408,6 +410,8 @@ namespace Data.Migrations
 
                     b.Property<bool>("Attending");
 
+                    b.Property<int>("CalendarId");
+
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("EventComment");
@@ -417,8 +421,6 @@ namespace Data.Migrations
                     b.Property<int>("RobinId");
 
                     b.Property<string>("UserId");
-
-                    b.Property<int>("eventId");
 
                     b.HasKey("Id");
 

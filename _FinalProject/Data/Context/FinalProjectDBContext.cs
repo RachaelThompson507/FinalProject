@@ -3,6 +3,7 @@ using _FinalProject.Model.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace _FinalProject.Data.Context
         public DbSet<Comment>Comments { get; set; }
         public DbSet<SubmissionStatus> SubmissionStatuses { get; set; }
         public DbSet <Calendar>Calendars { get; set; }
+        public DbSet<Event>Events { get; set; }
         public DbSet<Map>Maps { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
