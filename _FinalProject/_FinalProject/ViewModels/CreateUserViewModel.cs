@@ -23,8 +23,7 @@ namespace Web.ViewModels
         [Required, Display(Description = ("Last Name"))]
         public string LastName { get; set; }
 
-        [Required, Display(Description = "Account Type")]
-        public IdentityRole Role{ get; set; }
+        public string Role { get; set; }
 
     }
 }
