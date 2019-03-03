@@ -4,34 +4,39 @@
 }
 
 <div class="text-center mb4">
-    <h2>Create an Account</h2>
+    <h1 class="display-2">Create an Account</h1>
     <form action="CreateUser" method="post" class="form-signin">
         <div asp-validation-summary="All">
             <div class="form-label-group">
                 <input asp-for="Email" type="Email" id="inputEmail"
                        placeholder="Email Address" required autofocus />
-                <label asp-for="Email" for="inputEmail">Email Address</label>
+                <label for="inputEmail"></label>
             </div>
+            <br />
             <div class="form-label-group">
                 <input asp-for="Password" type="password" id="inputPassword"
                        placeholder="Desired Password" required autofocus />
-                <label asp-for="Password" for="inputPassword">Password</label>
+                <label for="inputPassword"></label>
             </div>
+            <br />
             <div class="form-label-group">
                 <input asp-for="ConfirmPassword" type="password" id="inputPassword"
                        placeholder="Confirm Password" required autofocus />
-                <label asp-for="ConfirmPassword" for="inputPassword">Confirm Password</label>
+                <label for="inputPassword"></label>
             </div>
+            <br />
             <div class="form-label-group">
                 <input asp-for="FirstName" type="text" id="inputName"
                        placeholder="First Name" required autofocus />
-                <label asp-for="FirstName" for="inputName">First Name</label>
+                <label for="inputName"></label>
             </div>
+            <br />
             <div class="form-label-group">
                 <input asp-for="LastName" type="text" id="inputLastName"
                        placeholder="Last Name" required autofocus />
-                <label asp-for="LastName" for="inputLastName">Last Name</label>
+                <label for="inputLastName"></label>
             </div>
+            <br />
             <div class="form-label-group">
                 <button class="btn btn-lrg btn-primary btn-block" type="submit">Submit</button>
             </div>
