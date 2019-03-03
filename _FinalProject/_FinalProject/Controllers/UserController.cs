@@ -28,11 +28,7 @@ namespace Web.Controllers
         [HttpGet]
         public IActionResult CreateUser()
         {
-            //only allowing User Role creation here
-            var userCreateVM = new CreateUserViewModel
-            {
-                //Role = _role.NormalizedName("GENERALUSER")
-            };
+            var userCreateVM = new CreateUserViewModel();
 
             return View(userCreateVM);
         }
@@ -55,9 +51,8 @@ namespace Web.Controllers
 
                 if(result.Succeeded)
                 {
-                    //new user - apply role
-                    var id = await _roleManager.FindByIdAsync("1");
-                    await _userManager.AddToRoleAsync(user, userCreateVM.Role );
+                    //new user
+                    await _userManager.AddToRoleAsync(user,"GeneralUser");
                     //auto - login user
                     await _signInManager.SignInAsync(user, true);
                     return RedirectToAction("Index", "User");

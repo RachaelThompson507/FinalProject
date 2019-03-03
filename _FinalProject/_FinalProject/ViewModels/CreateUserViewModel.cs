@@ -23,7 +23,6 @@ namespace Web.ViewModels
         [Required, Display(Description = ("Last Name"))]
         public string LastName { get; set; }
 
-        public string Role { get; set; }
 
     }
 }
