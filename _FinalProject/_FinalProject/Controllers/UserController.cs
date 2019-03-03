@@ -14,58 +14,67 @@ namespace Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<User> _signInManager;
-        //private readonly IdentityRole _role;
+        private readonly List<IdentityRole> _roles;
 
         public UserController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager,
-        SignInManager<User> signInManager)
+            SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
-            //_role = _roleManager.Roles.ToList();
-        }
-        
-        [HttpGet]
-        public IActionResult CreateUser()
-        {
-            var userCreateVM = new CreateUserViewModel();
 
-            return View(userCreateVM);
+            //call Role Table one time
+            _roles = _roleManager.Roles.ToList();
+        }
+
+        [HttpGet]
+        public IActionResult LogIn()
+        {
+            return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser(CreateUserViewModel userCreateVM)
+        public async Task<IActionResult> LogIn(LogInViewModel LvM)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var user = new User
-                {
-                    //Create User
-                    Email = userCreateVM.Email,
-                    UserName = userCreateVM.Email,
-                    FirstName = userCreateVM.FirstName,
-                    LastName = userCreateVM.LastName
-                };
+                var result = await _signInManager.PasswordSignInAsync(LvM.Email, LvM.Password, LvM.RememberMe, false);
 
-                var result = await _userManager.CreateAsync(user, userCreateVM.Password);
-
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
-                    //new user
-                    await _userManager.AddToRoleAsync(user,"GeneralUser");
-                    //auto - login user
-                    await _signInManager.SignInAsync(user, true);
-                    return RedirectToAction("Index", "User");
+                    //get the User
+                    var user = await _userManager.FindByEmailAsync(LvM.Email);
+
+                    //What Role?
+                    var isUser = await _userManager.IsInRoleAsync(user, "GeneralUser");
+
+                    //Redirect to the right Controller(based on Role)
+                     if (isUser)
+                    {
+                        return RedirectToAction("Index", "User");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {
-                    foreach(var error in result.Errors)
-                    {
-                        ModelState.AddModelError(error.Code, error.Description);
-                    }
+                    ModelState.AddModelError("SignIn", "Username or Password is Invalid");
                 }
-            };
-            return View(userCreateVM);
+            }
+            return View(LvM);
+        }
+
+        public async Task<IActionResult> SignOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Index()
+        {
+            return View();
         }
     }
 }
