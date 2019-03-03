@@ -14,7 +14,7 @@ namespace Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IdentityRole _role;
+        //private readonly IdentityRole _role;
 
         public UserController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager,
         SignInManager<User> signInManager)
@@ -22,7 +22,7 @@ namespace Web.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
-            _role = _roleManager.Roles.ToList();
+            //_role = _roleManager.Roles.ToList();
         }
         
         [HttpGet]
@@ -31,7 +31,7 @@ namespace Web.Controllers
             //only allowing User Role creation here
             var userCreateVM = new CreateUserViewModel
             {
-                Role = _role.NormalizedName("GENERALUSER")
+                //Role = _role.NormalizedName("GENERALUSER")
             };
 
             return View(userCreateVM);
