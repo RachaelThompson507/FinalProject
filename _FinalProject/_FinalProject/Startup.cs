@@ -10,6 +10,8 @@ using System;
 using Data.Interfaces;
 using Data.Implementations.MockRepositories;
 using Service.Services;
+using Microsoft.AspNetCore.Identity;
+using Data.Implementations.EFCoreRepositories;
 
 namespace _FinalProject
 {
@@ -34,14 +36,22 @@ namespace _FinalProject
 
             //MockImplementation
             //GetDependencyResolvedForMockRepositoryLayer(services);
+
             //EFCore Implementation
             GetDependencyResolvedForEFCoreRepositoryLayer(services);
+
             //ServiceLayer Implementation
             GetDependencyResolvedForServiceLayer(services);
+
             //service for DbContext
             services.AddDbContext<FinalProjectDBContext>();
-            //service for Identity
-            services.AddDefaultIdentity<User>().AddEntityFrameworkStores<FinalProjectDBContext>();
+
+            //service for Identitiy
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<FinalProjectDBContext>();
+
+            //service for cookie auth
+            CookieConfigureAuth(services);
+
             //using MVC
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -63,6 +73,9 @@ namespace _FinalProject
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            //use Identity Service
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -71,9 +84,23 @@ namespace _FinalProject
             });
         }
 
+        //for auth services
+        private void CookieConfigureAuth(IServiceCollection services)
+        {
+            services.ConfigureApplicationCookie(options =>
+            {
+                //overrides default account login
+                options.LoginPath = "/Account/SignIn";
+                //sends unauth user to a view
+                options.AccessDeniedPath = "/Account/Unauthorized";
+            });
+        }
+
+        //for dependency injection
         private void GetDependencyResolvedForMockRepositoryLayer(IServiceCollection services)
         {
             services.AddScoped<ICalendarRepository, MockCalendarRepository>();
+            services.AddScoped<IEventRepository, MockEventRepository>();
             services.AddScoped<ICommentRepository, MockCommentRepository>();
             services.AddScoped<ILetterRepository, MockLetterRepository>();
             services.AddScoped<IMapRepository, MockMapRepository>();
@@ -85,20 +112,21 @@ namespace _FinalProject
         }
         private void GetDependencyResolvedForEFCoreRepositoryLayer(IServiceCollection services)
         {
-            services.AddScoped<ICalendarRepository, MockCalendarRepository>();
-            services.AddScoped<ICommentRepository, MockCommentRepository>();
-            services.AddScoped<ILetterRepository, MockLetterRepository>();
-            services.AddScoped<IMapRepository, MockMapRepository>();
-            services.AddScoped<IPostRepository, MockPostRepository>();
-            services.AddScoped<IRobinRepository, MockRobinRepository>();
-            services.AddScoped<ISubmissionStatusRepository, MockSubmissionStatusRepository>();
-            services.AddScoped<IUsersByRobinRepository, MockUsersByRobinRepository>();
-            services.AddScoped<IUsersRepository, MockUserRepository>();
+            services.AddScoped<ICalendarRepository, EFCoreCalendarRepository>();
+            services.AddScoped<ICommentRepository, EFCoreCommentRepository>();
+            services.AddScoped<IEventRepository, EFCoreEventRepository>();
+            services.AddScoped<ILetterRepository, EFCoreLetterRepository>();
+            services.AddScoped<IMapRepository, EFCoreMapRepository>();
+            services.AddScoped<IPostRepository, EFCorePostRepository>();
+            services.AddScoped<IRobinRepository, EFCoreRobinRepository>();
+            services.AddScoped<ISubmissionStatusRepository, EFCoreSubmissionStatusRepository>();
+            services.AddScoped<IUsersByRobinRepository, EFCoreUsersByRobinRepository>();
+            services.AddScoped<IUsersRepository, EFCoreUserRepository>();
         }
-
         private void GetDependencyResolvedForServiceLayer(IServiceCollection services)
         {
             services.AddScoped<ICalendarService, CalendarService>();
+            services.AddScoped<IEventService, EventService>();
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<ILetterService, LetterService>();
             services.AddScoped<IMapService, MapService>();

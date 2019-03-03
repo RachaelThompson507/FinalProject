@@ -1,7 +1,9 @@
 ﻿using _FinalProject.Model;
 using _FinalProject.Model.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,7 @@ namespace _FinalProject.Data.Context
         public DbSet<Comment>Comments { get; set; }
         public DbSet<SubmissionStatus> SubmissionStatuses { get; set; }
         public DbSet <Calendar>Calendars { get; set; }
+        public DbSet<Event>Events { get; set; }
         public DbSet<Map>Maps { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,6 +33,13 @@ namespace _FinalProject.Data.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<IdentityRole>().HasData(
+            new IdentityRole { Name = "GeneralUser", NormalizedName = "GENERALUSER" },
+            new IdentityRole { Name = "RobinAdmin", NormalizedName = "ROBINADMIN" },
+            new IdentityRole { Name = "SuperAdmin", NormalizedName = "SUPERADMIN" }
+            );
+
         }
 
 

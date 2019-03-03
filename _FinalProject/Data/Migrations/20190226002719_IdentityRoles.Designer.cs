@@ -10,8 +10,8 @@ using _FinalProject.Data.Context;
 namespace Data.Migrations
 {
     [DbContext(typeof(FinalProjectDBContext))]
-    [Migration("20190220014330_usingIdntiyServceForUser")]
-    partial class usingIdntiyServceForUser
+    [Migration("20190226002719_IdentityRoles")]
+    partial class IdentityRoles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -302,6 +302,12 @@ namespace Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new { Id = "a4035352-12e4-4b10-a6ce-bd5cf8fdeadc", ConcurrencyStamp = "0ad977da-e489-4816-9d65-d6cead6e6a10", Name = "GeneralUser", NormalizedName = "GENERALUSER" },
+                        new { Id = "223d4071-73b5-42d3-b76b-9302887e3b79", ConcurrencyStamp = "0120078d-cd47-4b77-a494-2dd0bbc9a7bc", Name = "RobinAdmin", NormalizedName = "ROBINADMIN" },
+                        new { Id = "61f14167-ef95-4389-987e-270b513e5b23", ConcurrencyStamp = "fca5905e-abcb-43c5-9ff1-447f6f2e4883", Name = "SuperAdmin", NormalizedName = "SUPERADMIN" }
+                    );
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

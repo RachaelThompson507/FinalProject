@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _FinalProject.Data.Context;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(FinalProjectDBContext))]
-    partial class FinalProjectDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190302021652_added-Model-EVENT.CS")]
+    partial class addedModelEVENTCS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -205,8 +207,6 @@ namespace Data.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<string>("Address");
-
                     b.Property<string>("City");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -310,9 +310,9 @@ namespace Data.Migrations
                     b.ToTable("AspNetRoles");
 
                     b.HasData(
-                        new { Id = "3a75225c-1dd3-4609-a2f2-7e4095e7fb13", ConcurrencyStamp = "2f731147-0fdf-4d7b-ab46-dda654881b7d", Name = "GeneralUser", NormalizedName = "GENERALUSER" },
-                        new { Id = "45931194-d531-467d-a349-fe2a13042ba4", ConcurrencyStamp = "94c58648-3492-498f-b6dc-547a7ec6368d", Name = "RobinAdmin", NormalizedName = "ROBINADMIN" },
-                        new { Id = "8bec359f-777d-4d29-8901-1dfc855e5041", ConcurrencyStamp = "3eca73e2-32fc-406a-8ca4-51c211e1428a", Name = "SuperAdmin", NormalizedName = "SUPERADMIN" }
+                        new { Id = "1f617d3b-e6b2-4b23-bcf2-1cfe0a36b525", ConcurrencyStamp = "f0c1e617-5f12-41a8-a596-595ed09fdf1f", Name = "GeneralUser", NormalizedName = "GENERALUSER" },
+                        new { Id = "a141e5a2-21fc-4a42-917b-6d4a437602a4", ConcurrencyStamp = "5b12cc91-7e15-4b8e-827a-2214d5b166ab", Name = "RobinAdmin", NormalizedName = "ROBINADMIN" },
+                        new { Id = "276e1993-f5d2-41e0-8eb8-3bd8b849b1e6", ConcurrencyStamp = "f4dd2bc5-c99f-4f33-af56-b741753480bf", Name = "SuperAdmin", NormalizedName = "SUPERADMIN" }
                     );
                 });
 
@@ -410,6 +410,8 @@ namespace Data.Migrations
 
                     b.Property<bool>("Attending");
 
+                    b.Property<int>("CalendarId");
+
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("EventComment");
@@ -419,8 +421,6 @@ namespace Data.Migrations
                     b.Property<int>("RobinId");
 
                     b.Property<string>("UserId");
-
-                    b.Property<int>("eventId");
 
                     b.HasKey("Id");
 
