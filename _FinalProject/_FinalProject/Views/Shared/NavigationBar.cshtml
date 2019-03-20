@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "NavigationBar";
+}
+
+<ul class="nav">
+    @*All Users*@
+    <li class="nav-item">
+        <a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-action="About" asp-controller="Home">About</a>
+    </li>
+
+    @if (!User.Identity.IsAuthenticated)
+    {
+        //Anonymous
+        <li class="nav-item">
+            <a class="nav-link" asp-action="CreateUser" asp-controller="CreateUser">Sign Up</a>
+        </li>
+        @*<li class="nav-item">
+            <a class="nav-link" asp-action="SignIn" asp-controller="Account">Sign In</a>
+        </li>*@
+    }
+    else
+    {
+        if (User.IsInRole("GeneralUser"))
+        {
+            //Users-Not on Admin
+            @*<li class="nav-item">
+                <a class="nav-link active" asp-action="list" asp-controller="Homes">Home List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="list" asp-controller="Payment">Payments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="settings" asp-controller="Landlord">Settings</a>
+            </li>*@
+        }
+        @*else
+        {
+            //Admins
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Maintenance">Maintenace</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="list" asp-controller="Payments">Payments</a>
+            </li>
+        }*@
+    }
+</ul>
+
