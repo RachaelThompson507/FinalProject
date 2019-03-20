@@ -3,45 +3,24 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - RobinLetters</title>
+        <title>@ViewData["Title"]Robin Letters</title>
 
         <environment include="Development">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:300,400,500,600,700,800" rel="stylesheet">
-
+            <link rel="stylesheet" href="~/css/style.css">
         </environment>
         <environment exclude="Development">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+            <link rel="stylesheet" href="~/css/style.css">
         </environment>
     </head>
-    <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Robin Letters</a>
-                </div>
-                @*<div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    </ul>
-                </div>*@
-            </div>
-        </nav>
-
+    <body class="container-fluid" style="background-color: #bddae3">
         <partial name="_CookieConsentPartial" />
 
-        <div class="container body-content">
+        <div class="container body-content" id="RenderBody">
             @RenderBody()
-            <hr />
             <footer>
                 <p>&copy; 2019 - Robin Letters</p>
             </footer>

@@ -1,0 +1,33 @@
+﻿#main-form-container {
+    width: 60%;
+    margin: auto;
+    padding-top: 3em;
+    padding: 2em;
+    background-color: #e1eef2;
+
+    h1 {
+        font-weight: 300;
+        color: #252b2d;
+        padding: .5em;
+    }
+
+    input {
+        padding: .25em;
+    }
+
+    input:hover {
+        background-color: #f8fbfc;
+    }
+
+    input:focus {
+        border-color: #daeb2d;
+    }
+
+    button {
+        background-color: #bde3d9;
+    }
+
+    button:hover {
+        background-color: #daeb3d;
+    }
+}
